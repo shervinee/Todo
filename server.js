@@ -25,3 +25,66 @@ app.use(methodOverride());
 app.listen(8080); //this would start our app 
 console.log("App listening on port 8080");
 
+
+var todo = mongoose.model('Todo', {
+  text: String
+});
+//let's have our express routes here for now (get.post,delete)
+
+//api
+//get all todos
+app.get('/api/todos', function (req, res){
+  //we wanna get todos --> we use monogoose
+  Todo.find(function(err,todos){
+    if (err) 
+      res.send(err);
+
+    res.json(todos);
+  }); 
+});
+
+//post all the todos to back-end and then respond by whatever we have in our database now 
+app.post('/api/todos', function(req,res){
+
+  //we create a todo and fetch the info from whatever ajax is giving us 
+  Todo.create({
+    text : req.body.text,
+    done : false
+  }, function(err, todo) {
+    if(err)
+      res.send(err);
+    
+    Todo.find(function (err, todos) {
+      if (err)
+        res.send(err);
+
+      res.json(todos);
+    });
+  });
+});
+
+//delete a todo
+app.delete('/api/todos/:todo_id',function(req,res){
+  Todo.remove({
+    _id : req.params.todo_id
+  }, function(err,todo) {
+      if(err)
+        res.send(err);
+      Todo.find(function (err, todos) {
+        if (err)
+          res.send(err);
+
+        res.json(todos);
+    });
+  });
+});
+
+
+/* now that we have all the route for our action, we just need to have a route for angular 
+so it can easily get connected to other routes we just made using express and mongoose 
+we should remember that angular can automatically handle routing for us with the $http on our single page app index.html
+*/
+
+app.get('*', function(req,res){
+  res.sendfile('./public/index.html'); //loading our single page 
+});
