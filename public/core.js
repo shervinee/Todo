@@ -3,7 +3,8 @@
 var myTodo = angular.module('myTodo', []);
 
 function mainController($scope, $http){
-    //get request using our api which loads all the todos from database
+    //get request using our api which loads all the todos from database 
+    //this would be done automatically without any function call
     $http.get('/api/todos')
         .success(function(data){
             //get all the todos so we can loop on them in frontend

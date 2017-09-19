@@ -7,18 +7,17 @@
 <head>
     <!-- META -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Optimizess mobile viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Optimizess mobile viewport -->
 
     <title>Node/Angular Todo App</title>
 
-    <!-- SCROLLS -->
+   
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
     <!-- load bootstrap -->
     <link rel="stylesheet" type="text/css" href="style.css">
     <!-- load css file -->
 
-    <!-- Jquery -->
+
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <!-- load jquery -->
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
@@ -45,7 +44,18 @@
             </div>
         </div>
 
-        
+        <!-- here we create the form(template) for the user to add todos to her list -->
+        <div id="todo-form" class="row">
+            <div class="col-sm-8 col-sm-offset-2 text-center">
+                <form>
+                    <div class="form-group">
+                        <!-- this would be the todo that user wants to add and would be our formData.text in angular -->
+                        <input type="text" class = "form-control input-lg text-center" placeholder="I wanna procastinate the whole day !!" ng-model="formData.text">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-lg" ng-click="createTodo()">Add to list</button> 
+                </form>
+            </div>
+        </div>
     </div>
 </body>
 </html>

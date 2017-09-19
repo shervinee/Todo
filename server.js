@@ -86,5 +86,5 @@ we should remember that angular can automatically handle routing for us with the
 */
 
 app.get('*', function(req,res){
-  res.sendfile('./public/index.html'); //loading our single page 
+  res.sendfile('./index.html'); //loading our single page 
 });
