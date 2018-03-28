@@ -1,4 +1,5 @@
 //this is the main angular file contaning a blue print all we need for our app to run (for now)
+//basically our presentation layer
 
 var myTodo = angular.module('myTodo', []);
 
@@ -30,7 +31,7 @@ function mainController($scope, $http){
 
     //handling deleting a tood when the user wants
     $scope.deleteTodo = function(id){
-        $http.delete('/api/todos' +id)
+        $http.delete('/api/todos/' +id)
         .success(function(data){
             $scope.todos = data
             console.log(data);

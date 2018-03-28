@@ -26,7 +26,7 @@ app.listen(8080); //this would start our app
 console.log("App listening on port 8080");
 
 
-var todo = mongoose.model('Todo', {
+var Todo = mongoose.model('Todo', {
   text: String
 });
 //let's have our express routes here for now (get.post,delete)
