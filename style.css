@@ -10,3 +10,22 @@ body {
 #todo-list {
             margin-bottom: 30px;
         }
+#todo-form{
+    margin-bottom: 50px;
+}
+/* #top_bar {
+    height: 45px;
+    top: 0;
+    position: fixed;
+    z-index: 200;
+    width: 100%;
+    border-bottom: solid 1px #2968A7;
+    background-color: #3F7FBF;
+    transition: height 200ms ease-in;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.15); 
+} */
+
+.todo-bar{
+    background: #3F7FBF;
+    border-color: #2968A7;
+}

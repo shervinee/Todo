@@ -2,62 +2,136 @@
 <!doctype html>
 
 <!-- ASSIGN OUR ANGULAR MODULE -->
-<html ng-app="myTodo">
+<html lang="en" ng-app="myTodo">
 
 <head>
     <!-- META -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Optimizess mobile viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> <!-- Optimizess mobile viewport -->
 
     <title>Node/Angular Todo App</title>
 
    
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <!-- load bootstrap -->
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <style>
+        html {
+            overflow-y: scroll;
+        }
+
+    body {
+                padding-top: 50px;
+            }
+
+    #todo-list {
+                margin-bottom: 30px;
+            }
+    #todo-form{
+        margin-bottom: 50px;
+    }
+    /* #top_bar {
+        height: 45px;
+        top: 0;
+        position: fixed;
+        z-index: 200;
+        width: 100%;
+        border-bottom: solid 1px #2968A7;
+        background-color: #3F7FBF;
+        transition: height 200ms ease-in;
+        box-shadow: 0 1px 2px rgba(0,0,0,0.15); 
+    } */
+
+    .todo-bar{
+        background: #3F7FBF;
+        border-color: #2968A7;
+    }
+    </style>
     <!-- load css file -->
 
-
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-    <!-- load jquery -->
+        <!-- load jquery -->
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
-    <!-- load angular -->
-    <script src="core.js"></script>
-
+        <!-- load angular -->
+ 
 </head>
 <!-- SET THE CONTROLLER AND GET ALL TODOS -->
 
-<body ng-controller="mainController">
-    <div class="container">
-        <div class="jombotron text-center">
-            <h1>TDL a convenient todo list app</h1> 
-            <p style="padding-top: 2em;">Just simply add all the items you want to your todo list down here, then later check them to delete them</p>
-            <br><h2>number of todos are: <span class="label label-info">{{ todos.length }}</span></h2>
-        </div>
+    <body ng-controller="mainController">
+        <nav class="todo-bar navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">TodoList</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
         
-        
-        <div id = "todo-list" class="row">
-            <div class="col-sm-4 col-sm-offset-4">
-                <div class="checkbox" ng-repeat="todo in todos">
-                    <label>
-                        <input type="checkbox" ng-click="deleteTodo(todo._id)">{{ todo.text }}
-                    </label>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Account</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
+                            Category
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">Study</a>
+                            <a class="dropdown-item" href="#">Work</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Fun</a>
+                        </div>
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </div>
+        </nav>
+        <div class="container">
+            <div class="jombotron text-center">
+                <h1>TDL a convenient todo list app</h1> 
+                <p style="padding-top: 2em;">Just simply add all the items you want to your todo list down here, then later check them to delete them</p>
+                <br><h2>number of todos are: <span class="label label-info">{{ todos.length }}</span></h2>
+            </div>
+            
+            
+            <div id = "todo-list" class="row">
+                <div class="col-sm-4 col-sm-offset-4">
+                    <div class="checkbox" ng-repeat="todo in todos">
+                        <label>
+                            <input type="checkbox" ng-click="deleteTodo(todo._id)">{{ todo.text }}
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- here we create the form(template) for the user to add todos to her list -->
+            <div id="todo-form" class="row">
+                <div class="col-md-8 .col-md-offset-4 text-center">
+                    <form>
+                        <div class="form-group">
+                            <!-- this would be the todo that user wants to add and would be our formData.text in angular -->
+                            <input type="text" class = "form-control input-lg text-center" placeholder="I wanna procastinate the whole day !!" ng-model="formData.text">
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-lg" ng-click="createTodo()">Add to list</button> 
+                    </form>
                 </div>
             </div>
         </div>
 
-        <!-- here we create the form(template) for the user to add todos to her list -->
-        <div id="todo-form" class="row">
-            <div class="col-sm-8 col-sm-offset-2 text-center">
-                <form>
-                    <div class="form-group">
-                        <!-- this would be the todo that user wants to add and would be our formData.text in angular -->
-                        <input type="text" class = "form-control input-lg text-center" placeholder="I wanna procastinate the whole day !!" ng-model="formData.text">
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-lg" ng-click="createTodo()">Add to list</button> 
-                </form>
-            </div>
-        </div>
-    </div>
-</body>
+        <script src="core.js"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+
+    </body>
 </html>
