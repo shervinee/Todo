@@ -57,7 +57,7 @@
 <!-- SET THE CONTROLLER AND GET ALL TODOS -->
 
     <body ng-controller="mainController">
-        <nav class="todo-bar navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #3F7FBF">
             <a class="navbar-brand" href="#">TodoList</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                 aria-expanded="false" aria-label="Toggle navigation">
@@ -89,7 +89,7 @@
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
                     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    <button class="btn btn-outline-success my-2 my-sm-0" style="color: #F2635F; border-color:#F2635F "type="submit">Search</button>
                 </form>
             </div>
         </nav>
@@ -119,7 +119,7 @@
                             <!-- this would be the todo that user wants to add and would be our formData.text in angular -->
                             <input type="text" class = "form-control input-lg text-center" placeholder="I wanna procastinate the whole day !!" ng-model="formData.text">
                         </div>
-                        <button type="submit" class="btn btn-primary btn-lg" ng-click="createTodo()">Add to list</button> 
+                        <button type="submit" class="btn btn-primary btn-lg" style="background-color: #3F7FBF" ng-click="createTodo()">Add to list</button> 
                     </form>
                 </div>
             </div>
