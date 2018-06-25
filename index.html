@@ -19,9 +19,6 @@
             overflow-y: scroll;
         }
 
-    body {
-                padding-top: 50px;
-            }
 
     #todo-list {
                 margin-bottom: 30px;
@@ -102,7 +99,7 @@
             
             
             <div id = "todo-list" class="row">
-                <div class="col-sm-4 col-sm-offset-4">
+                <div class="col-sm-4 col-sm-offset-4 text-center">
                     <div class="checkbox" ng-repeat="todo in todos">
                         <label>
                             <input type="checkbox" ng-click="deleteTodo(todo._id)">{{ todo.text }}
@@ -114,13 +111,13 @@
             <!-- here we create the form(template) for the user to add todos to her list -->
             <div id="todo-form" class="row">
                 <div class="col-md-8 .col-md-offset-4 text-center">
-                    <form>
                         <div class="form-group">
                             <!-- this would be the todo that user wants to add and would be our formData.text in angular -->
-                            <input type="text" class = "form-control input-lg text-center" placeholder="I wanna procastinate the whole day !!" ng-model="formData.text">
+                            <input type="text" class = "form-control input-lg text-center" placeholder="I wanna procastinate the whole day!!" ng-model="formData.text">
                         </div>
-                        <button type="submit" class="btn btn-primary btn-lg" style="background-color: #3F7FBF" ng-click="createTodo()">Add to list</button> 
-                    </form>
+                        <div class="">
+                        <button></button>
+                        </div>
                 </div>
             </div>
         </div>

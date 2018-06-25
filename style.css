@@ -5,6 +5,8 @@ html {
 
 body {
             padding-top: 50px;
+            margin: 0 auto;
+            max-width: 50em; 
         }
 
 #todo-list {
@@ -28,4 +30,9 @@ body {
 .todo-bar{
     background: #3F7FBF;
     border-color: #2968A7;
+}
+
+.col-centered{
+    margin: 0 auto;
+    float: none;
 }
