@@ -1,6 +1,7 @@
-var mongoose = require('mongoose'); //we get the mongose that we want 
+// adding the required dependencies 
+var mongoose = require('mongoose'); 
 
-// this should be about mongoose module ?
+// creating our DTO 
 module.exports = mongoose.model('Todo', {
     text: {
         type: String,

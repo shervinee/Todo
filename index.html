@@ -26,18 +26,19 @@
     #todo-form{
         margin-bottom: 50px;
     }
-    /* #top_bar {
-        height: 45px;
-        top: 0;
-        position: fixed;
-        z-index: 200;
-        width: 100%;
-        border-bottom: solid 1px #2968A7;
-        background-color: #3F7FBF;
-        transition: height 200ms ease-in;
-        box-shadow: 0 1px 2px rgba(0,0,0,0.15); 
-    } */
 
+    #todo-adder{ 
+           display: flex;
+         justify-content: center;
+    }
+    .btn-outline-success{
+        color: #FFCC66; 
+        border-color:#FFCC66; 
+    }
+    .btn-outline-success:hover {
+        background-color: #FFCC66;
+        border-color: #FFCC66;
+    }
     .todo-bar{
         background: #3F7FBF;
         border-color: #2968A7;
@@ -86,7 +87,7 @@
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
                     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" style="color: #F2635F; border-color:#F2635F "type="submit">Search</button>
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                 </form>
             </div>
         </nav>
@@ -109,15 +110,17 @@
             </div>
 
             <!-- here we create the form(template) for the user to add todos to her list -->
-            <div id="todo-form" class="row">
-                <div class="col-md-8 .col-md-offset-4 text-center">
+            <div id="todo-adder" class="row">
+                <div class="col-sm-8 col-sm-offset-2 text-center">
+                    <form>
                         <div class="form-group">
-                            <!-- this would be the todo that user wants to add and would be our formData.text in angular -->
-                            <input type="text" class = "form-control input-lg text-center" placeholder="I wanna procastinate the whole day!!" ng-model="formData.text">
+            
+                            <input type="text" class="form-control input-lg text-center" placeholder="I want to procastinate alll day!"
+                                ng-model="formData.text">
                         </div>
-                        <div class="">
-                        <button></button>
-                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-lg todo-bar" ng-click="createTodo()">Add Todo</button>
+                    </form>
                 </div>
             </div>
         </div>
